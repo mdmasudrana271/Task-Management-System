@@ -18,9 +18,9 @@ def add_task(request):
 
 def edit_task(request,id):
     task = models.Task.objects.get(pk=id)
-    task_form = forms.TaskForm(instance=task)
+    task_form = forms.EditTaskForm(instance=task)
     if request.method=='POST':
-        task_form = forms.TaskForm(request.POST,instance=task)
+        task_form = forms.EditTaskForm(request.POST,instance=task)
         if task_form.is_valid():
             task_form.save()
             return redirect('homepage')
